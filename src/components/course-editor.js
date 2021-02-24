@@ -3,7 +3,7 @@ import '../styles/editor.style.css'
 
 const CourseEditor = ({history}) =>
     <div>
-            <div id="lz-editor">
+            <div id = "lz-editor">
                 <div className="row" id="lz-nav-editor">
                     <div className="col-4 nav-left-pane">
                         <div className="nav-left-pane-icon">
@@ -55,7 +55,7 @@ const CourseEditor = ({history}) =>
                     <div className="col-4 left-pane">
 
                         <ul className="list-group">
-                            <li className="list-group-item lz-list-group-item text-dark">
+                            <li className="list-group-item lz-list-group-item">
                                 Module 1 -jQuery
                                 <i className="fas fa-trash-alt float-right"></i>
                             </li>
@@ -93,11 +93,11 @@ const CourseEditor = ({history}) =>
                     <div className="col-8 right-pane">
 
                         <div className="content-right-pane-top">
-                            <div>Topic 1</div>
-                            <div>Topic 2</div>
-                            <div>Topic 3</div>
-                            <div>Topic 4</div>
-                            <div><i className="fas fa-plus float-right"></i></div>
+                            <div className="lz-item">Topic 1</div>
+                            <div className="lz-item">Topic 2</div>
+                            <div className="lz-item">Topic 3</div>
+                            <div className="lz-item">Topic 4</div>
+                            <div className="lz-item"><i className="fas fa-plus float-right"></i></div>
                         </div>
                     </div>
                 </div>
