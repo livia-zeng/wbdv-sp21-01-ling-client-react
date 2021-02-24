@@ -1,0 +1,137 @@
+
+#lz-editor .container {
+  height: 100%;
+}
+
+#lz-nav-editor {
+  background-color: #495057;
+  border-bottom: 1px solid black;
+  text-align: center;
+  left: 0;
+  right: 0;
+  height: 70px;
+  color: white;
+}
+
+#lz-editor .content {
+  height: calc(100% - 70px);
+}
+
+.lz-font-color{
+  color: #f8f9fa;
+}
+
+.nav-left-pane {
+  display: flex;
+  width: 100%;
+}
+
+.nav-left-pane-text {
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-right: 150px;
+}
+
+.nav-left-pane-text-container {
+  width: 70%;
+  padding: 0px;
+}
+
+.nav-left-pane-icon {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+}
+
+.nav-left-pane-icon i {
+  position: absolute;
+  /*top: 25px;*/
+  font-size: 20px;
+}
+
+
+#lz-editor .nav-right-pane {
+  border-bottom: 0px;
+  display: flex;
+}
+
+#lz-editor .nav-item {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+#lz-editor .left-pane {
+  padding: 20px;
+  background-color: #495057;
+}
+
+#lz-editor .right-pane {
+  padding: 20px;
+  background-color: white;
+}
+
+#lz-editor .content-right-pane-top {
+  display: flex;
+  height: 50px;
+  flex: 1;
+}
+
+#lz-editor .content-right-pane-top div{
+  flex-grow: 1;
+  margin-right: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: grey;
+  cursor: pointer;
+  color: white;
+}
+
+.content-right-pane-top div:hover {
+  background-color: black;
+}
+
+.list-group-item:hover {
+  background-color: dodgerblue;
+}
+
+.lz-list-group-item {
+  background-color :#6c757d;
+  margin-top:5px;
+  color: #282c34;
+}
+
+
+.nav-item-link {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  border: 2px solid #495057;
+}
+
+.nav-item-link:hover {
+  background: black;
+  text-decoration:none;
+  cursor:pointer;
+  border: 2px solid black;
+  color: white;
+}
+
+.lz-item:hover {
+  color: black;
+  opacity: 0.5;
+}

@@ -1,0 +1,38 @@
+.lz-nav {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  right: 0px;
+}
+
+.lz-padding-5px {
+  padding: 5px;
+}
+
+.lz-bg-light {
+  background-color: #dee2e6!important;
+}
+
+.lz-course-list-other {
+  background-color: #f8f9fa;
+}
+
+#lz-course-list-today {
+  padding-top: 95px;
+  background-color: #f8f9fa;
+}
+
+body{
+  background-color: #e9ecef;
+}
+
+.myButton {
+  padding: 30px;
+  display:block;
+  text-align:center;
+  z-index: 1;
+  position: fixed;
+  bottom: 30%;
+  right: 0%;
+}
+
