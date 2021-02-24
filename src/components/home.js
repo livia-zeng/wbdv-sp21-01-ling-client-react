@@ -24,6 +24,12 @@ export default () =>
                         Course Editor
                     </Link>
                 </li>
+
+                <li>
+                    <Link to="/courses" className="list-group-item">
+                        Course Manager
+                    </Link>
+                </li>
             </ul>
 
         </div>
