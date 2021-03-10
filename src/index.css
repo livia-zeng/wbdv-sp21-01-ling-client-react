@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.list-group-item.active a {
+  color: white;
+}
+
+.nav-item.active a {
+  color: black;
+  font-weight: bold
+}
+
+.select-active {
+  background: #007bff !important;
+}
+

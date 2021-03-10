@@ -28,8 +28,12 @@ const CourseRow = (
             <td className="w-50">
                 {
                     !editing &&
-                    <Link to="/courses/editor">
-                        {title}
+                    // <Link to={`/courses/editor/${course._id}`}>
+                    //     {title}
+                    // </Link>
+
+                    <Link to={`/courses/table/edit/${course._id}`}>
+                    {title}
                     </Link>
                 }
                 {

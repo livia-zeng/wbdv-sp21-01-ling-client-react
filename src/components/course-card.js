@@ -41,7 +41,7 @@ const CourseCard = (
                         make up the bulk of the card's
                         content.</p>
                     <img src={``}/>
-                    <Link to="/courses/editor" className="btn btn-primary">
+                    <Link to={`/courses/grid/edit/${course._id}`} className="btn btn-primary">
                         {course.title}
                     </Link>
                     {!editing && <i onClick={() => setEditing(true)}

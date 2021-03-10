@@ -2,7 +2,7 @@ import React from 'react'
 import {Link, Route, Redirect} from "react-router-dom";
 import CourseTable from "./course-table";
 import CourseGrid from "./course-grid";
-import CourseEditor from "./course-editor";
+import CourseEditor from "./course-editor/course-editor";
 import courseService from "../services/course-service";
 
 
@@ -56,14 +56,14 @@ class CourseManager extends React.Component {
     render() {
         return (
             <div>
-                <Route path={['/courses/table']}>
+                <Route exact path="/courses/table">
                     <CourseTable
                         addCourse={this.addCourse}
                         updateCourse={this.updateCourse}
                         deleteCourse={this.deleteCourse}
                         courses={this.state.courses}/>
                 </Route>
-                <Route path="/courses/grid">
+                <Route exact path="/courses/grid">
                     <CourseGrid
                         addCourse={this.addCourse}
                         deleteCourse={this.deleteCourse}
@@ -71,7 +71,16 @@ class CourseManager extends React.Component {
                         courses={this.state.courses}/>
                 </Route>
 
-                <Route path="/courses/editor"
+                <Route path={[ "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId",
+                                "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId",
+                                "/courses/:layout/edit/:courseId/modules/:moduleId",
+                                 "/courses/:layout/edit/:courseId/:moduleId/:lessonId",
+                                 "/courses/:layout/edit/:courseId/:moduleId",
+                                 "/courses/:layout/edit/:courseId",
+                            ]
+                            }
+
+                       exact={true}
                        render={(props) => <CourseEditor {...props}/>}>
                 </Route>
 
@@ -81,7 +90,7 @@ class CourseManager extends React.Component {
 
                 <Link to="/">
                     <a className="float-right font-italic initialism">Back to Home</a>
-                    {/*<i className="fas fa-2x fa-home float-right" ></i>*/}
+
                 </Link>
 
             </div>
