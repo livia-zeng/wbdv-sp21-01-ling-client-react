@@ -32,8 +32,10 @@ const CourseEditor = ({history, params}) => {
                 <div className="row" id="lz-nav-editor">
                     <div className="col-4 nav-left-pane">
                         <div className="nav-left-pane-icon">
-                            <i className="fas fa-times-circle fa-1x lz-item"
-                               onClick={() => history.goBack()}></i>
+
+                            <Link className="fas fa-times-circle fa-1x lz-item"
+                                  to = {`/courses/${layout}`}
+                               ></Link>
                         </div>
                         <div className="nav-left-pane-text-container">
                             <div className="nav-left-pane-text mx-2 my-3"><h4>{title}</h4>
