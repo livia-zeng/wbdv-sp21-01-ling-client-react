@@ -20,7 +20,6 @@ const WidgetList = (
     const [editingWidget, setEditingWidget] = useState({})
 
     useEffect(() => {
-        console.log(topicId)
         if (topicId !== "undefined" && typeof topicId !== "undefined") findWidgetsForTopic(topicId)
         else {
             clearWidgets()
