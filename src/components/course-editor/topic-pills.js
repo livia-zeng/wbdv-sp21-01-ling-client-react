@@ -2,8 +2,7 @@ import React, {useEffect} from 'react'
 import {connect} from "react-redux";
 import EditableItem from "../editable-item";
 import {useParams} from "react-router-dom";
-import topicService from "../../services/topic-service"
-
+import topicActions from "../../actions/topic-action";
 const TopicPills = (
     {
         topics = [],
@@ -48,29 +47,19 @@ const stpm = (state) => ({
 
 const dtpm = (dispatch) => ({
     createTopic: (lessonId) => {
-        topicService.createTopic(lessonId, {title: 'New Topic'})
-            .then(topic => dispatch({type: "CREATE_TOPIC", topic: topic}))
-
+        topicActions.createTopic(dispatch,lessonId)
     },
     updateTopic: (newItem) => {
-        topicService.updateTopic(newItem._id, newItem)
-            .then(status => dispatch({type: "UPDATE_TOPIC", updateTopic: newItem}))
+        topicActions.updateTopic(dispatch,newItem)
     },
     deleteTopic: (topicToDelete) => {
-        topicService.deleteTopic(topicToDelete._id)
-            .then(status => dispatch({type: "DELETE_TOPIC", topicToDelete: topicToDelete}))
+        topicActions.deleteTopic(dispatch,topicToDelete)
     },
     findTopicsForLesson: (lessonId) => {
-        topicService.findTopicsForLesson(lessonId)
-            .then(topics => dispatch({
-                type: "FIND_TOPICS_FOR_LESSON",
-                topics: topics
-            }))
+        topicActions.findTopicsForLesson(dispatch,lessonId)
     },
     clearTopics: () => {
-        dispatch({
-            type: "CLEAR_TOPIC"
-        })
+        topicActions.clearTopics(dispatch)
     }
 })
 

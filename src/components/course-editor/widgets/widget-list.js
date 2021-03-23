@@ -1,11 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import HeadingWidget from "./heading-widget";
-import ParagraphWidget from "./paragraph-widget";
 import {useParams} from "react-router-dom";
-import widgetService from "../../../services/widget-service"
-
+import Widget from "./widget";
 import {connect} from "react-redux";
-
+import widgetActions from "../../../actions/widget-action";
 const WidgetList = (
     {
         widgets = [],
@@ -38,9 +35,7 @@ const WidgetList = (
                                 editingWidget.id === widget.id &&
                                     <>
                                         <i onClick={() => {
-
                                             updateWidget(editingWidget).then(
-                                                // console.log(editingWidget),
                                                 setEditingWidget({})
                                             )
                                             }
@@ -54,21 +49,10 @@ const WidgetList = (
                                 <i onClick={() => setEditingWidget(widget)} className="fas fa-cog fa-2x float-right"></i>
                             }
                             <br></br>
-                            {
-                                widget.type === "HEADING" &&
-                                <HeadingWidget
-                                    editing={editingWidget.id === widget.id}
-                                    setEditingWidget={setEditingWidget}
-                                    widget={editingWidget.id === widget.id ? editingWidget : widget}
-                                    />
-                            }
-                            {
-                                widget.type === "PARAGRAPH" &&
-                                <ParagraphWidget
-                                    editing={editingWidget.id === widget.id}
-                                    setEditingWidget={setEditingWidget}
-                                    widget={editingWidget.id === widget.id ? editingWidget : widget}/>
-                            }
+                            <Widget
+                                editing={editingWidget.id === widget.id}
+                                setEditingWidget={setEditingWidget}
+                                widget={editingWidget.id === widget.id ? editingWidget : widget}/>
                         </li>
                     )
                 }
@@ -84,34 +68,21 @@ const stpm = (state) => ({
 
 const dtpm = (dispatch) => ({
     createWidget: (topicId) => {
-        widgetService.createWidget(topicId, {type: "HEADING", size: 1, text: "New Widget for Heading"})
-            .then(widget => dispatch({type: "CREATE_WIDGET", widget: widget}))
+        widgetActions.createWidget(dispatch,topicId)
     },
 
     updateWidget: async (newItem) => {
-        widgetService.updateWidget(newItem.id, newItem)
-            .then(status => {
-                dispatch({type: "UPDATE_WIDGET", updateWidget: newItem}
-                )})
+        await widgetActions.updateWidget(dispatch, newItem)
 
     },
     deleteWidget: (widgetToDelete) => {
-        widgetService.deleteWidget(widgetToDelete.id)
-            .then(status => {
-                dispatch({type: "DELETE_WIDGET", widgetToDelete: widgetToDelete})
-            })
+        widgetActions.deleteWidget(dispatch,widgetToDelete)
     },
     findWidgetsForTopic: (topicId) => {
-        widgetService.findWidgetsForTopic(topicId)
-            .then(widgets => dispatch({
-                type: "FIND_WIDGETS_FOR_TOPIC",
-                widgets: widgets
-            }))
+        widgetActions.findWidgetsForTopic(dispatch,topicId)
     },
     clearWidgets: () => {
-        dispatch({
-            type: "CLEAR_WIDGET"
-        })
+        widgetActions.clearWidgets(dispatch)
     }
 })
 
