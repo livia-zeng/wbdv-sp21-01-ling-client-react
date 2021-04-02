@@ -35,6 +35,7 @@ const WidgetList = (
                                 editingWidget.id === widget.id &&
                                     <>
                                         <i onClick={() => {
+
                                             updateWidget(editingWidget).then(
                                                 setEditingWidget({})
                                             )
