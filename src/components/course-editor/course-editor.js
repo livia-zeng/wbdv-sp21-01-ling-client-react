@@ -62,8 +62,6 @@ const CourseEditor = ({history, params}) => {
 
                         <div className="content-right-pane-top">
                             <TopicPills/>
-
-
                         </div>
 
                         <WidgetList/>

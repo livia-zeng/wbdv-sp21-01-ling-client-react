@@ -106,9 +106,9 @@
   background-color: black;
 }
 
-.list-group-item:hover {
-  background-color: dodgerblue;
-}
+/*.list-group-item:hover {*/
+/*  background-color: #b9d3fa;*/
+/*}*/
 
 .lz-list-group-item {
   background-color :#6c757d;
