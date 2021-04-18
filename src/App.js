@@ -22,6 +22,9 @@ function App() {
             <Route path="/courses/:courseId/quizzes/:quizId" exact={true}>
                 <Quiz/>
             </Route>
+            <Route path="/courses/:courseId/quizzes/:quizId/attempts" exact={true}>
+                <Quiz/>
+            </Route>
         </div>
       </BrowserRouter>
   );

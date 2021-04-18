@@ -1,19 +1,18 @@
 import React, {useState} from "react";
 
-const MultipleChoiceQuestion = ({question}) => {
+const MultipleChoiceQuestion = ({question,gradeStatus}) => {
     const [yourAnswer, setYourAnswer] = useState("")
-    const [gradeStatus,beginGrade] = useState(false)
 
     return(
         <div>
             <h5>
                 {question.question}
                 {
-                    gradeStatus && question.correct === yourAnswer &&
+                    gradeStatus && question.correct === question.answer &&
                     <i className="fas fa-check text-success mx-2"></i>
                 }
                 {
-                    gradeStatus && yourAnswer.length !== 0 && question.correct !== yourAnswer &&
+                    gradeStatus && question.answer.length !== 0 && question.correct !== question.answer &&
                     <i className="fas fa-times text-danger mx-2"></i>
                 }
             </h5>
@@ -23,14 +22,15 @@ const MultipleChoiceQuestion = ({question}) => {
                         return(
                             <li className={`list-group-item
                             ${gradeStatus && choice === question.correct  ? 'list-group-item-success' : 'list-group-item'}
-                            ${gradeStatus && choice === yourAnswer &&  yourAnswer !== question.correct ? 'list-group-item-danger' : 'list-group-item'}
+                            ${gradeStatus && choice === question.answer &&  question.answer !== question.correct ? 'list-group-item-danger' : 'list-group-item'}
                             `}>
                                 <label><input
                                     onClick={() => {
-                                        setYourAnswer(choice)
+                                         setYourAnswer(choice)
+                                        question.answer = choice
+                                        console.log(question.answer)
                                     }}
                                     type="radio"
-                                    checked={choice === yourAnswer}
                                     name={question._id}/> {choice}</label>
                                 {
                                     gradeStatus && choice === question.correct &&
@@ -38,7 +38,7 @@ const MultipleChoiceQuestion = ({question}) => {
                                 }
 
                                 {
-                                    gradeStatus && choice === yourAnswer &&  yourAnswer !== question.correct &&
+                                    gradeStatus && choice === question.answer &&  question.answer !== question.correct &&
                                     <i className="fas fa-times float-right"></i>
                                 }
                             </li>
@@ -50,14 +50,6 @@ const MultipleChoiceQuestion = ({question}) => {
                 Your answer: {yourAnswer}
             </p>
 
-            <div type="button" className="btn btn-success" onClick={() => {
-                beginGrade(true)
-            }}>Grade</div>
-
-            <div type="button" className="btn btn-primary mx-3" onClick={() => {
-                beginGrade(false)
-                setYourAnswer("")
-            }}>Reset</div>
         </div>
     )
 }
