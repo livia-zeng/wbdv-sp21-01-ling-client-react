@@ -10,6 +10,7 @@ const Quiz = () => {
     const [quiz, setQuiz] = useState([])
     const [gradeStatus,beginGrade] = useState(false)
     const [attempts, setAttempts] = useState([])
+    const [currentAttempt, setCurrentAttempt] = useState([])
     const findAttempt = () => {
         attemptService.findAttemptsForQuiz(quizId)
             .then((attempts) => {
@@ -45,16 +46,24 @@ const Quiz = () => {
             </ul>
             <div type="button" className="btn btn-success my-3" onClick={() => {
                 beginGrade(true)
-                quizService.submitQuiz(quiz._id,questions).then(()=> {
+                quizService.submitQuiz(quiz._id,questions).then((attempt)=> {
                     findAttempt();
+                    setCurrentAttempt(attempt)
                 })
             }}>Submit</div>
 
             {
                 gradeStatus &&
+
                 <ul className={"list-group my-2"}>
+                    <h6>Current Score : {currentAttempt.score}</h6>
+
                     {
-                        attempts.map((attempt) => {
+                        attempts.length > 1 &&
+                        <h6>Past Attempt:</h6>
+                    }
+                    {
+                        attempts.filter((attempt) => attempt._id !== currentAttempt._id).map((attempt) => {
                             return (
                                 <li className={"list-group-item"}>
                                     <h6>Attempt Time : {attempt.createdAt}</h6>
